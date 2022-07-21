@@ -434,7 +434,7 @@ code {
 Di seguito lo screenshot della realizzazione semplificata su IMUNES:
 <img src="https://user-images.githubusercontent.com/48606090/180093876-07b56fe6-f52b-429b-8714-5428822d26fc.png" alt="image"></p>
 </p>
-Come si può vedere nell'immagine, le postazioni sono raggruppate per colore in diverse reti dedicate ai vari settori: <br>
+Come si può vedere dall'immagine, le postazioni sono raggruppate per colore per indicare le diverse reti dedicate ai vari settori: <br>
 (N.B. {X} rappresenta il contatore della postazione )
 <ul>
     <li>Students Network - postazioni S{X}</li>
@@ -552,12 +552,12 @@ Disponendo di un indirizzo di classe B 172.16.0.0/16 viene effettuato il seguent
   </tr>
 </table>
 <p>Per la realizzazione della rete si è scelto l'approccio di tipo Software-defined networking: per mettere in contatto le interfacce appartenenti alla stessa VLAN tra diversi piani ed edifici, vengono settate porte VLAN Trunking (802.1Q) tramite Open vSwitch.<br><br>
-L'assegnazione degli IP è dinamica, e viene effettuata tramite il server DHCP, che espone un'interfaccia virtuale per ogni VLAN sull'interfaccia fisica eth0, tramite il deamon NetworkManager. La medesima soluzione viene applicata al router sull'interfaccia fisica eth0. A seconda del tag VLAN presente nel frame ethernet questo verrà gestistito dall'interfaccia virtuale corrispondente a quella rete.</p>
+L'assegnazione degli IP è dinamica, e viene effettuata tramite il server DHCP, che espone un'interfaccia virtuale per ogni VLAN sull'interfaccia fisica eth0, tramite il deamon NetworkManager. La medesima soluzione viene applicata al router sempre sull'interfaccia fisica eth0. A seconda del tag VLAN presente nel frame ethernet questo verrà gestistito dall'interfaccia virtuale appartanente a quella rete.</p>
 <table>
   <tr>
     <th>Nome Rete</th>
     <th>Tag VLAN</th>
-    <th>Interface</th>
+    <th>Virtual Interface</th>
     <th>DHCP Server</th>
     <th>Router</th>
   </tr>
@@ -632,9 +632,7 @@ L'assegnazione degli IP è dinamica, e viene effettuata tramite il server DHCP, 
     <td>172.16.25.254</td>
   </tr>
 </table>
-<br>
-<br>
-Oltre al server DHCP, nella rete universitaria sono presenti i seguenti server, il cui accesso è controllato tramite regole iptables presenti sul router:
+<p>Oltre al server DHCP, nella rete universitaria sono presenti i seguenti server, il cui accesso è controllato tramite regole iptables presenti sul router:
 <ul>
  <li>
   DNS Server ns.university.edu<br>
@@ -650,12 +648,14 @@ Oltre al server DHCP, nella rete universitaria sono presenti i seguenti server, 
  </li>
  <li>
   FTP Server ftp.university.edu<br>
-  Gestisce la posta elettronica dell'ateneo, sia in modalità attiva che passiva, accessibile solo dalla rete professori e amministrazione
+  Gestisce il trasferimento dei file, sia in modalità attiva che passiva, accessibile solo dalla rete professori e amministrazione
+  ![image](https://user-images.githubusercontent.com/48606090/180193326-49adaeb8-d258-40cd-ac48-875b5704e9ee.png)
  </li>
 </ul>
-I pacchetti ICMP transitano liberamente.
-Il computer avente MAC Address 42:00:aa:00:00:30 ed appartenente alla VLAN Administration può connettersi ai vari server tramite SSH.
-<p><img src="https://user-images.githubusercontent.com/48606090/180104155-74499cec-cca4-4c17-86d1-ee8ab03ad148.png" alt="image"></p>
+</p>
+<p>Tutti i server sono raggiungibili dalla rete interna tramite il comando ping.</p>
+<p>Il computer avente MAC Address 42:00:aa:00:00:30 ed appartenente alla VLAN Administration può connettersi ai vari server tramite SSH.</p>
+<p><img src="https://user-images.githubusercontent.com/48606090/180193828-145f0635-daeb-4f75-9f85-abf46c0ee0da.png" alt="image"></p>
 
 </body>
 </html>
