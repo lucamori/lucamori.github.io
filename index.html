@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+ <h1>Progetto di Reti di Calcolatori</h1> 
+ <h3>luca.mori@studenti.unimi.it - AA 21/22</h3>
+<p>Il progetto si pone come obiettivo di applicare i concetti e le tecniche di implementazione dei servizi e protocolli discussi ed esaminati durante il corso, e consiste nella progettazione di una rete universitaria con l'utilizzo del software IMUNES usato nelle ore di laboratorio.</p>
+<p><b>Tematiche trattate: DHCP, DNS, FTP, HTTP, IPTABLES, SMTP, Trunking, VLAN</b><br>
+<b>Dipendenze (in aggiunta alla macchina virtuale LabReti2019): ifupdown</b></p>
+<p>Si consideri una sede universitaria composta da:
+  <ul>
+    <li>250 postazioni riservati agli uffici amministrativi</li>
+    <li>500 postazioni riservati agli uffici professori</li>
+    <li>4000 postazioni riservati agli studenti</li>
+    <li>2 laboratori per studenti (250 postazioni/laboratorio)</li>
+    <li>5 laboratori di ricerca (250 postazioni/laboratorio)</li>
+  </ul>
+</p>Tutte le postazioni sono concentrate in tre edifici:</p>
+  <table>
+  <tr>
+    <th></th>
+    <th>Edificio 1</th>
+    <th>Edificio 2</th>
+    <th>Edificio 3</th>
+  </tr>
+  <tr>
+    <th>Piano 3</th>
+    <td>
+        100 postazioni Amministrazione<br>
+        100 postazioni Professori
+    </td>
+    <td>
+        100 postazioni Amministrazione<br>
+        100 postazioni Professori
+    </td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <th>Piano 2</th>
+    <td>
+        300 postazioni Professori</td>
+    <td>
+        300 postazioni Professori</td>
+    <td>
+        250 postazioni Lab Ricerca 4<br>
+        250 postazioni Lab Ricerca 5<br>
+        50 postazioni Amministrazione
+    </td>
+  </tr>
+  <tr>
+    <th>Piano 1</thr>
+    <td>1000 postazioni Studenti</td>
+    <td>1000 postazioni Studenti</td>
+    <td>
+        250 postazioni Lab Ricerca 1<br>
+        250 postazioni Lab Ricerca 2<br>
+        250 postazioni Lab Ricerca 3
+    </td>
+  </tr>
+  <tr>
+    <th>Piano 0</thr>
+    <td>1000 postazioni studenti</td>
+    <td>1000 postazioni studenti</td>
+    <td>
+        250 postazioni Lab studenti 1<br>
+        250 postazioni Lab studenti 2
+    </td>
+  </tr>
+</table>
+<p>In ogni edificio sono presenti switch collegati in cascata, ognuno dei quali gestisce le postazioni di un singolo piano. Gli switch in cascata sono quindi collegati ad uno switch centrale collegato al server DHCP per l'assegnamento dinamico degli indirizzi. Infine, lo switch centrale è collegato ad un router che regola la comunicazione tra la rete locale e i server (DNS, Web, SMTP, FTP) attraverso regole iptables.<br>
+Di seguito lo screenshot della realizzazione semplificata su IMUNES:
+<img src="https://user-images.githubusercontent.com/48606090/180093876-07b56fe6-f52b-429b-8714-5428822d26fc.png" alt="image"></p>
+</p>
+Come si può vedere nell'immagine, le postazioni sono raggruppate per colore in diverse reti dedicate ai vari settori: <br>
+(N.B. {X} rappresenta il contatore della postazione )
+<ul>
+    <li>Students Network - postazioni S{X}</li>
+    <li>Professors Network - postazioni P{X}</li>
+    <li>Administration Network - postazioni A{X}</li>
+    <li>Student Lab 1 Network - postazioni SL1{X}</li>
+    <li>Student Lab 2 Network - postazioni SL2{X}</li>
+    <li>Research Lab 1 Network - postazioni RL1{X}</li>
+    <li>Research Lab 2 Network - postazioni RL2{X}</li>
+    <li>Research Lab 3 Network - postazioni RL3{X}</li>
+    <li>Research Lab 4 Network - postazioni RL4{X}</li>
+    <li>Research Lab 5 Network - postazioni RL5{X}</li>
+  </ul>
+<br>
+Disponendo di un indirizzo di classe B 172.16.0.0/16 viene effettuato il seguente piano di indirizzamento:
+<table>
+  <tr>
+    <th>Nome Rete</th>
+    <th>Tag VLAN</th>
+    <th>Net ID</th>
+    <th>Subnet ID</th>
+    <th>Range</th>
+    <th>Gateway</th>
+    <th>Broadcast</th>
+  </tr>
+  <tr>
+    <td>Students</td>
+    <td>10</td>
+    <td>172.16.0.0</td>
+    <td>255.255.240.0</td>
+    <td>172.16.0.2 - 172.16.15.253</td>
+    <td>172.16.15.254</td>
+    <td>172.16.15.255</td>
+  </tr>
+  <tr>
+    <td>Professors</td>
+    <td>20</td>
+    <td>172.16.16.0</td>
+    <td>255.255.254.0</td>
+    <td>172.16.16.2 - 172.16.17.253</td>
+    <td>172.16.17.254</td>
+    <td>172.16.17.255</td>
+  </tr>
+  <tr>
+    <td>Administration</td>
+    <td>30</td>
+    <td>172.16.18.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.18.2 - 172.16.18.253</td>
+    <td>172.16.18.254</td>
+    <td>172.16.18.255</td>
+  </tr>
+  <tr>
+    <td>Student Lab 1</td>
+    <td>100</td>
+    <td>172.16.19.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.19.2 - 172.16.19.253</td>
+    <td>172.16.19.254</td>
+    <td>172.16.19.255</td>
+  </tr>
+  <tr>
+    <td>Student Lab 2</td>
+    <td>110</td>
+    <td>172.16.20.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.18.2 - 172.16.20.253</td>
+    <td>172.16.20.254</td>
+    <td>172.16.20.255</td>
+  </tr>
+  <tr>
+    <td>Research Lab 1</td>
+    <td>200</td>
+    <td>172.16.21.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.21.2 - 172.16.21.253</td>
+    <td>172.16.21.254</td>
+    <td>172.16.21.255</td>
+  </tr>
+  <tr>
+    <td>Research Lab 2</td>
+    <td>210</td>
+    <td>172.16.22.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.22.2 - 172.16.22.253</td>
+    <td>172.16.22.254</td>
+    <td>172.16.22.255</td>
+  </tr>
+  <tr>
+    <td>Research Lab 3</td>
+    <td>200</td>
+    <td>172.16.23.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.23.2 - 172.16.23.253</td>
+    <td>172.16.23.254</td>
+    <td>172.16.23.255</td>
+  </tr>
+  <tr>
+    <td>Research Lab 4</td>
+    <td>230</td>
+    <td>172.16.24.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.24.2 - 172.16.24.253</td>
+    <td>172.16.24.254</td>
+    <td>172.16.24.255</td>
+  </tr>
+  <tr>
+    <td>Research Lab 5</td>
+    <td>240</td>
+    <td>172.16.25.0</td>
+    <td>255.255.255.0</td>
+    <td>172.16.25.2 - 172.16.25.253</td>
+    <td>172.16.25.254</td>
+    <td>172.16.25.255</td>
+  </tr>
+</table>
+<p>Per la realizzazione della rete si è scelto l'approccio di tipo Software-defined networking: per mettere in contatto le interfacce appartenenti alla stessa VLAN tra diversi piani ed edifici, vengono settate porte VLAN Trunking (802.1Q) tramite Open vSwitch.<br><br>
+L'assegnazione degli IP è dinamica, e viene effettuata tramite il server DHCP, che espone un'interfaccia virtuale per ogni VLAN sull'interfaccia fisica eth0, tramite il deamon NetworkManager. La medesima soluzione viene applicata al router sull'interfaccia fisica eth0. A seconda del tag VLAN presente nel frame ethernet questo verrà gestistito dall'interfaccia virtuale corrispondente a quella rete.</p>
+<table>
+  <tr>
+    <th>Nome Rete</th>
+    <th>Tag VLAN</th>
+    <th>Interface</th>
+    <th>DHCP Server</th>
+    <th>Router</th>
+  </tr>
+  <tr>
+    <td>Students</td>
+    <td>10</td>
+    <td>eth0.10</td>
+    <td>172.16.0.1</td>
+    <td>172.16.15.254</td>
+  </tr>
+  <tr>
+    <td>Professors</td>
+    <td>20</td>
+    <td>eth0.20</td>
+    <td>172.16.16.1</td>
+    <td>172.16.17.254</td>
+  </tr>
+  <tr>
+    <td>Administration</td>
+    <td>30</td>
+    <td>eth0.30</td>
+    <td>172.16.18.1</td>
+    <td>172.16.18.254</td>
+  </tr>
+  <tr>
+    <td>Student Lab 1</td>
+    <td>100</td>
+    <td>eth0.100</td>
+    <td>172.16.19.1</td>
+    <td>172.16.19.254</td>
+  </tr>
+  <tr>
+    <td>Student Lab 2</td>
+    <td>110</td>
+    <td>eth0.110</td>
+    <td>172.16.20.1</td>
+    <td>172.16.20.254</td>
+  </tr>
+  <tr>
+    <td>Research Lab 1</td>
+    <td>200</td>
+    <td>eth0.200</td>
+    <td>172.16.21.1</td>
+    <td>172.16.21.254</td>
+  </tr>
+  <tr>
+    <td>Research Lab 2</td>
+    <td>210</td>
+    <td>eth0.210</td>
+    <td>172.16.22.1</td>
+    <td>172.16.22.254</td>
+  </tr>
+  <tr>
+    <td>Research Lab 3</td>
+    <td>200</td>
+    <td>eth0.220</td>
+    <td>172.16.23.1</td>
+    <td>172.16.23.254</td>
+  </tr>
+  <tr>
+    <td>Research Lab 4</td>
+    <td>230</td>
+    <td>eth0.230</td>
+    <td>172.16.24.1</td>
+    <td>172.16.24.254</td>
+  </tr>
+  <tr>
+    <td>Research Lab 5</td>
+    <td>240</td>
+    <td>eth0.240</td>
+    <td>172.16.25.1</td>
+    <td>172.16.25.254</td>
+  </tr>
+</table>
+<br>
+<br>
+Oltre al server DHCP, nella rete universitaria sono presenti i seguenti server, il cui accesso è controllato tramite regole iptables presenti sul router:
+<ul>
+ <li>
+  DNS Server ns.university.edu<br>
+  Traduce gli indirizzi IP degli altri server, accessibile da tutta la rete interna
+ </li>
+ <li>
+  Web Server www.university.edu<br>
+  Gestisce i servizi web sulla porta 80, accessibile da tutta la rete interna
+ </li>
+ <li>
+  SMTP Server smtp.university.edu<br>
+  Gestisce la posta elettronica dell'ateneo, accessibile solo dalla rete studenti, professori e amministrazione
+ </li>
+ <li>
+  FTP Server ftp.university.edu<br>
+  Gestisce la posta elettronica dell'ateneo, sia in modalità attiva che passiva, accessibile solo dalla rete professori e amministrazione
+ </li>
+</ul>
+I pacchetti ICMP transitano liberamente.
+Il computer avente MAC Address 42:00:aa:00:00:30 ed appartenente alla VLAN Administration può connettersi ai vari server tramite SSH.
+<p><img src="https://user-images.githubusercontent.com/48606090/180104155-74499cec-cca4-4c17-86d1-ee8ab03ad148.png" alt="image"></p>
+
+</body>
+</html>
